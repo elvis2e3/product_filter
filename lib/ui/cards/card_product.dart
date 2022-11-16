@@ -46,8 +46,8 @@ Widget cardProduct(BuildContext context, Product product){
                           )
                         ),
                         child: Container(
-                          width: size.width * 0.35,
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          width: size.width * 0.34,
+                          padding: const EdgeInsets.symmetric(vertical: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
