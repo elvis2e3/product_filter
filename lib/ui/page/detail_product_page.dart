@@ -51,7 +51,7 @@ class DetailProductPage extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(30))
                 ),
-                height: size.height * 0.55,
+                height: size.height * 0.51,
                 width: size.width,
                 child: Column(
                   children: [
