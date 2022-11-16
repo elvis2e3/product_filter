@@ -70,11 +70,11 @@ Widget cardProduct(BuildContext context, Product product){
                           onPressed: (){
                             if(product.like){
                               product.like = false;
+                              _productProvider.deleteProductFavorite(product);
                             }else{
                               product.like = true;
                               _productProvider.setProductFavorite(product);
                             }
-
                           },
                           icon: Icon(
                             product.like?Icons.favorite:Icons.favorite_border,

@@ -12,8 +12,7 @@ class FilterPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     ProductProvider productProvider = Provider.of<ProductProvider>(context);
-    List favorites = productProvider.favorites.values.toList();
-
+    List favorites = productProvider.loadFavorites();
     return Scaffold(
       body: ChangeNotifierProvider(
         create: ( _ ) => FilterFormProvider(),
@@ -82,7 +81,10 @@ class FilterPage extends StatelessWidget {
                     style: CustomLabels.h1,
                   ),
                 ),
-                ...favorites.map((product){
+                ...favorites.isEmpty?[
+                  const SizedBox(height: 20,),
+                  const Center(child: Text("You don't have favorite products..."),)
+                ]:favorites.map((product){
                   return cardProduct(context, product);
                 }).toList()
               ],

@@ -39,14 +39,28 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> loadFavorites() async {
-    List<String> _favorites = LocalStorage.favorites;
+  deleteProductFavorite(Product product) async {
+    favorites.remove(product.id);
+    final _favorites = favorites.values;
+    List<String> favoriteSave = [];
     _favorites.forEach((element) {
-      Product product = Product.fromJson(jsonDecode(element));
-      favorites[product.id] = product;
+      Map<String, dynamic> _product = element.toJson();
+      String _productString = jsonEncode(_product);
+      favoriteSave.add(_productString);
     });
+    LocalStorage.favorites = favoriteSave;
     notifyListeners();
-    return true;
+  }
+
+  List<Product> loadFavorites(){
+    if(favorites.isEmpty){
+      List<String> _favorites = LocalStorage.favorites;
+      _favorites.forEach((element) {
+        Product product = Product.fromJson(jsonDecode(element));
+        favorites[product.id] = product;
+      });
+    }
+    return favorites.values.toList();
   }
 
 }
