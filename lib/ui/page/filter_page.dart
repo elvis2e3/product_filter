@@ -78,10 +78,10 @@ class FilterPage extends StatelessWidget {
     BuildContext context,
     FilterFormProvider filterFormProvider,
     ProductProvider productProvider
-    ) {
+    ) async {
     final isValid = filterFormProvider.validateForm();
     if ( isValid ){
-      productProvider.getProducts(filterFormProvider.text_filter);
+      await productProvider.getProducts(filterFormProvider.text_filter);
       Navigator.pushNamed(context, "products");
     }
   }

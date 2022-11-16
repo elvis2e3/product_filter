@@ -52,7 +52,7 @@ class Product {
   bool catalogListing;
   bool useThumbnailId;
   int orderBackend;
-
+  bool like = false;
   factory Product.fromJson(Map<String, dynamic> json){
     return Product(
       id: json["id"],

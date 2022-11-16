@@ -17,14 +17,20 @@ class CustomLabels {
   static TextStyle normal = GoogleFonts.montserrat();
 
   static TextStyle h1White = GoogleFonts.montserrat(
-    fontSize: 25,
-    fontWeight: FontWeight.bold,
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
     color: Colors.white
   );
 
   static TextStyle h1BoldWhite = GoogleFonts.montserrat(
-    fontSize: 25,
+    fontSize: 18,
     color: Colors.white
+  );
+
+  static TextStyle h2White = GoogleFonts.montserrat(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
   );
 
 }
