@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:product_filter/models/address.dart';
 
 List<Product> productFromJson(List data) => List<Product>.from(data.map((x) => Product.fromJson(x)));
@@ -27,6 +29,7 @@ class Product {
     required this.catalogListing,
     required this.useThumbnailId,
     required this.orderBackend,
+    required this.like,
   });
 
   String id;
@@ -53,6 +56,7 @@ class Product {
   bool useThumbnailId;
   int orderBackend;
   bool like = false;
+
   factory Product.fromJson(Map<String, dynamic> json){
     return Product(
       id: json["id"],
@@ -78,7 +82,35 @@ class Product {
       catalogListing: json["catalog_listing"] == null ? true : json["catalog_listing"],
       useThumbnailId: json["use_thumbnail_id"],
       orderBackend: json["order_backend"],
+      like: json["like"]==null?false:json["like"],
     );
   }
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "site_id": siteId,
+    "title": title,
+    "price": price,
+    "currency_id": currencyId,
+    "available_quantity": availableQuantity,
+    "sold_quantity": soldQuantity,
+    "stop_time": stopTime.toIso8601String(),
+    "condition": condition,
+    "permalink": permalink,
+    "thumbnail": thumbnail,
+    "thumbnail_id": thumbnailId,
+    "accepts_mercadopago": acceptsMercadopago,
+    "address": address.toJson(),
+    "original_price": originalPrice,
+    "category_id": categoryId,
+    "official_store_id": officialStoreId,
+    "domain_id": domainId,
+    "catalog_product_id": catalogProductId,
+    "tags": tags,
+    "catalog_listing": catalogListing,
+    "use_thumbnail_id": useThumbnailId,
+    "order_backend": orderBackend,
+    "like": like,
+  };
 
 }

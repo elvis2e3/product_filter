@@ -12,8 +12,8 @@ class LocalStorage {
     return prefs.getString('route') ?? "filter";
   }
 
-  static String get token {
-    return prefs.getString('token') ?? "";
+  static List<String> get favorites {
+    return prefs.getStringList('favorites') ?? [];
   }
 
   // SETTER
@@ -21,8 +21,8 @@ class LocalStorage {
     prefs.setString('route', value);
   }
 
-  static set token(String value){
-    prefs.setString('token', value);
+  static set favorites(List<String> value){
+    prefs.setStringList('favorites', value);
   }
 
 }
