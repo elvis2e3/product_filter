@@ -7,6 +7,10 @@ import 'package:product_filter/ui/labels/custom_labels.dart';
 Widget cardProduct(BuildContext context, Product product){
   Size size = MediaQuery.of(context).size;
   ProductProvider _productProvider = Provider.of<ProductProvider>(context, listen: false);
+  Map favoriteProducts = _productProvider.favorites;
+  if(favoriteProducts.containsKey(product.id)){
+    product.like = true;
+  }
   return Container(
     padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
     child: Card(
